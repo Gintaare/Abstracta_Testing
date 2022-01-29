@@ -23,3 +23,27 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("persistCookies", () => {
+	cy.getCookies()
+		.then((cookies) => {
+			cy.writeFile('cookies.json', cookies);
+		});
+});
+
+Cypress.Commands.add("restoreCookies", () => {
+
+	cy.readFile('cookies.json')
+		.then((cookies) => {
+			cookies.forEach((cookie) => {
+				// cy.log( JSON.stringify( cookie ) ); // See the cookie contents
+				cy.setCookie(cookie.name, cookie.value, {
+					domain: Cypress.env('domain'),
+					path: cookie.path,
+					secure: cookie.secure,
+					httpOnly: cookie.httpOnly,
+					expiry: cookie.expiry
+				});
+			});
+		});
+});
