@@ -1,3 +1,4 @@
 {
-    "baseUrl": "http://opencart.abstracta.us/"
+    "baseUrl": "http://opencart.abstracta.us/",
+    "chromeWebSecurity": false 
 }

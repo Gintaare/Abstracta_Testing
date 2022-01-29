@@ -1,11 +1,12 @@
+const { user1 } = require('../../fixtures/user')
 
 describe('Registration', () => {
     beforeEach(() => {
-        cy.visit('https://opencart.abstracta.us/index.php?route=account/register')
+        cy.visit('index.php?route=account/register')
     })
 
     it.skip('The user is able to open registration form', () => {
-        cy.get('[href$="=account/register"]').eq(0).click({force: true})
+        cy.get('[href$="=account/register"]').eq(0).click({ force: true })
         cy.url().should('include', '=account/register')
     });
 
@@ -18,23 +19,25 @@ describe('Registration', () => {
     });
 
     it('Should be able to submit registration form', () => {
-        cy.fixture('example').then(c => {
-        cy.get('#input-firstname').type(c.name)
-        cy.get('#input-lastname').type(c.lastname)
-        cy.get('#input-telephone').type(c.phone)
-        cy.get('#input-password').type(c.password)
-        cy.get('#input-confirm').type(c.password)
-        cy.get('input[value="1"]').click()
-    });
+        cy.get('#input-firstname').type(user1.firstName)
+        cy.get('#input-lastname').type(user1.lastName)
+        cy.get('#input-telephone').type(user1.phone)
+        cy.get('#input-password').type(user1.password)
+        cy.get('#input-confirm').type(user1.password)
+
+        cy.get('input[name="agree"]').click()
+
+        cy.contains('Continue').click()
+        // Assert
     });
 
     it('Should be able to open contact form', () => {
-   
-        
+
+
     });
 
     it('Should be able to open contact form', () => {
-   
-        
+
+
     });
 });
