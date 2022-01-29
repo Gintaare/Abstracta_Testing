@@ -1,0 +1,8 @@
+{
+  "name": "Sandra",
+  "lastname": "Garcia",
+  "password": "Sandra123",
+  "phone": "8645654512",
+  "email": "hello@cypress.io",
+  "body": "Fixtures are a great way to mock data for responses to routes"
+}
