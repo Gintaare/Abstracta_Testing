@@ -2,6 +2,8 @@
     "baseUrl": "https://opencart.abstracta.us/",
     "chromeWebSecurity": false,
     
-    "userEmail": "geigetrapriffa-7094@yopmail.com",
-    "userPwd": "8%YhrGp5PM"
+    "env": {
+        "userEmail": "geigetrapriffa-7094@yopmail.com",
+        "userPwd": "8%YhrGp5PM"
+    }
 }

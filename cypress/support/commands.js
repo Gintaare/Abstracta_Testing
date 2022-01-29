@@ -24,15 +24,18 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("persistCookies", () => {
+Cypress.Commands.add("clearAuth", () => {
+	cy.clearCookie('OCSESSID')
+})
+
+Cypress.Commands.add("persistAuth", () => {
 	cy.getCookies()
 		.then((cookies) => {
 			cy.writeFile('cookies.json', cookies);
 		});
 });
 
-Cypress.Commands.add("restoreCookies", () => {
-
+Cypress.Commands.add("restoreAuth", () => {
 	cy.readFile('cookies.json')
 		.then((cookies) => {
 			cookies.forEach((cookie) => {

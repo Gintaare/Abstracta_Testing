@@ -19,7 +19,9 @@ var user1 = {
     zip: f.address.zipCode("00000"),
   },
   phone: f.phone.phoneNumberFormat(1),
-  alias: f.lorem.words(2)
+  alias: f.lorem.words(2),
+
+  company: f.commerce.department()
 }
 
 module.exports = {

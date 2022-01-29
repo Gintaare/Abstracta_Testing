@@ -11,6 +11,7 @@ describe('Login', () => {
     });
 
     it('Bad credentials should fail', () => {
+        cy.clearAuth()
         cy.get('#input-email').type(f.internet.email())
             .get('#input-password').type(f.internet.password())
             .get('input[value="Login"]').click()
@@ -22,8 +23,9 @@ describe('Login', () => {
     });
 
     it('Should be able to login', () => {
-        cy.get('#input-email').type(Cypress.config().userEmail)
-            .get('#input-password').type(Cypress.config().userPwd)
+        cy.clearAuth()
+        cy.get('#input-email').type(Cypress.env('userEmail'))
+            .get('#input-password').type(Cypress.env('userPwd'))
             .get('input[value="Login"]').click()
 
         // Assert
@@ -31,6 +33,6 @@ describe('Login', () => {
         cy.contains('My Account').should('exist')
 
         // Saving cookies for logged in user
-        cy.persistCookies()
+        cy.persistAuth()
     });
 });

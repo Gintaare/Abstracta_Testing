@@ -1,6 +1,6 @@
 describe('My Account', () => {
 	beforeEach(() => {
-		cy.restoreCookies()
+		cy.restoreAuth()
 		cy.visit('index.php?route=account/account')
 	})
 
